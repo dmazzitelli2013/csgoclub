@@ -9,11 +9,13 @@ class Lobbyuserinfo extends Base {
 		parent::__construct();
 
 		$caller_ip = $this->get_caller_ip();
-		if(is_null($caller_ip) || $caller_ip != $_SERVER['SERVER_ADDR']) {
+		$host= gethostname();
+		$server_ip = gethostbyname($host);
+		if(is_null($caller_ip) || $caller_ip != $server_ip) {
 			//exit("Access denied.");
 		}
 
-		echo $caller_ip . ' - ' . $_SERVER['SERVER_ADDR'];
+		echo $caller_ip . ' - ' . $server_ip;
 	}
 
 	public function get_user_by_token($user_token) {
