@@ -52,3 +52,18 @@ span.error {
 	border-radius: 5px;
 	background: brown;
 }
+
+#users_grid {
+	display: inline-block;
+	margin-top: 40px;
+	text-align: center;
+}
+
+.lobby_user {
+	width: 300px;
+	margin: 4px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border: 2px solid brown;
+	border-radius: 5px;
+}

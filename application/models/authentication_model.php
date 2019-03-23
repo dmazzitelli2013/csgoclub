@@ -85,10 +85,10 @@ class Authentication_Model extends CI_Model {
 	}
 
 	private function generate_user_token() {
-		$user_token = bin2hex(openssl_random_pseudo_bytes(64));
+		$user_token = bin2hex(random_bytes(32));
 		
 		while(!$this->is_valid_generated_user_token($user_token)) {
-			$user_token = bin2hex(openssl_random_pseudo_bytes(64));
+			$user_token = bin2hex(random_bytes(32));
 		}
 
 		return $user_token;
