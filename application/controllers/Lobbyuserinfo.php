@@ -11,14 +11,12 @@ class Lobbyuserinfo extends Base {
 		$caller_ip = $this->get_caller_ip();
 		$server_ip = $this->config->item('server_ip_address');
 		if(is_null($caller_ip) || $caller_ip != $server_ip) {
-			//exit("Access denied.");
+			exit("Access denied.");
 		}
-
-		echo $caller_ip . ' - ' . $server_ip;
 	}
 
 	public function get_user_by_token($user_token) {
-
+		
 	}
 
 }
