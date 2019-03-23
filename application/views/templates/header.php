@@ -10,4 +10,10 @@
 	<div id="header">
 		CS:GO Club
 	</div>
+	<?php if(isset($this->session->userdata['user'])) { ?>
+	<div id="header-user">
+		<?php echo $this->session->userdata['user']->firstname . ' ' . $this->session->userdata['user']->lastname; ?>
+		 - <a href="<?php echo site_url('main/logout'); ?>">[SALIR]</a>
+	</div>
+	<?php } ?>
 	<div id="container">

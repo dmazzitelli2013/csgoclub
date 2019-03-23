@@ -42,3 +42,13 @@ input[type="submit"] {
 	text-align: center;
 	background: slategray;
 }
+
+span.error {
+	font-size: 14px;
+	width: 300px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	display: inline-block;
+	border-radius: 5px;
+	background: brown;
+}
