@@ -32,7 +32,11 @@ class Authentication_Model extends CI_Model {
 
 	public function register_user($data) {
 		$data['password'] = md5($data['password']);
+		$data['created'] = date('Y-m-d H:i:s');
+		$data['updated'] = $data['created'];
+		
 		$this->db->insert($this->table, $data);
+
 		return true;
 	}
 
@@ -46,7 +50,7 @@ class Authentication_Model extends CI_Model {
 		if(count($result) > 0) {
 			$user_token = $this->generate_user_token();
 			$this->db->where('email', $data['email']);
-			$this->db->update($this->table, array('user_token' => $user_token));
+			$this->db->update($this->table, array('user_token' => $user_token, 'updated' => date('Y-m-d H:i:s')));
 
         	$result = $result[0];
         	$result->user_token = $user_token;
@@ -58,7 +62,7 @@ class Authentication_Model extends CI_Model {
 
 	public function logout_user($email) {
 		$this->db->where('email', $email);
-		$this->db->update($this->table, array('user_token' => NULL));
+		$this->db->update($this->table, array('user_token' => NULL, 'updated' => date('Y-m-d H:i:s')));
 	}
 
 	public function get_user_by_token($user_token) {
