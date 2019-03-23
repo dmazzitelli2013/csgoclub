@@ -1,7 +1,7 @@
 <div id="users_grid"></div>
 <script>
 	var user_token = "<?php echo $user_token; ?>";
-	var connection = new WebSocket('ws://localhost:8080');
+	var connection = new WebSocket('ws://lobby.csgoclub.tk:8080');
 	
 	connection.onopen = function(e) {
 		connection.send(user_token);
