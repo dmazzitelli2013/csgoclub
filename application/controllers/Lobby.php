@@ -14,11 +14,14 @@ class Lobby extends Base {
 	}
 
 	public function index() {
+		$this->check_valid_session();
 		$this->load_template_with_view('pages/lobby/main');
 	}
 
 	public function play2vs2() {
-		$this->load_template_with_view('pages/lobby/play2vs2');
+		$this->check_valid_session();
+		$data['user_token'] = $this->session->userdata['user']->user_token;
+ 		$this->load_template_with_view('pages/lobby/play2vs2', $data);
 	}
 
 }
