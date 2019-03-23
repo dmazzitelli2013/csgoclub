@@ -44,8 +44,31 @@ class Authentication_Model extends CI_Model {
 		$result = $this->db->get($this->table)->result();
 
 		if(count($result) > 0) {
+			$user_token = $this->generate_user_token();
+			$this->db->where('email', $data['email']);
+			$this->db->update($this->table, array('user_token' => $user_token));
+
         	$result = $result[0];
+        	$result->user_token = $user_token;
         	return $this->get_formatted_user($result);
+        }
+
+        return NULL;
+	}
+
+	public function logout_user($email) {
+		$this->db->where('email', $email);
+		$this->db->update($this->table, array('user_token' => NULL));
+	}
+
+	public function get_user_by_token($user_token) {
+		$this->db->where('user_token', $user_token);
+		$result = $this->db->get($this->table)->result();
+
+		if(count($result) > 0) {
+        	$user = $result[0];
+        	unset($user->password);
+        	return $user;
         }
 
         return NULL;
@@ -55,6 +78,27 @@ class Authentication_Model extends CI_Model {
 		unset($user->password);
 		unset($user->steam_id);
 		return $user;
+	}
+
+	private function generate_user_token() {
+		$user_token = bin2hex(openssl_random_pseudo_bytes(64));
+		
+		while(!$this->is_valid_generated_user_token($user_token)) {
+			$user_token = bin2hex(openssl_random_pseudo_bytes(64));
+		}
+
+		return $user_token;
+	}
+
+	private function is_valid_generated_user_token($user_token) {
+		$this->db->where('user_token', $user_token);
+		$result = $this->db->get($this->table)->result();
+
+		if(count($result) > 0) {
+        	return false;
+        }
+
+        return true;
 	}
 
 }
