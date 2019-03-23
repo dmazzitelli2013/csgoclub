@@ -110,6 +110,8 @@ class Main extends Base {
 	}
 
 	public function logout() {
+		$this->check_valid_session();
+		$this->authentication_model->logout_user($this->session->userdata['user']->email);
 		$this->session->sess_destroy();
 		redirect('/');
 	}
