@@ -1,0 +1,44 @@
+body { 
+	background: black;
+	color: white;
+	font-family: Georgia;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+input {
+	font-size: 16px;
+	width: 240px;
+	margin: 5px;
+	padding: 5px;
+	height: 26px;
+	border-radius: 5px;
+}
+
+input[type="submit"] {
+	height: 40px;
+}
+
+#header {
+	text-align: center;
+	height: 100px;
+}
+
+#container {
+	width: 100%;
+	text-align: center;
+}
+
+.main_option {
+	width: 200px;
+	margin: auto;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	text-align: center;
+	background: slategray;
+}
