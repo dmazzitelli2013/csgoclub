@@ -9,8 +9,7 @@ class Lobbyuserinfo extends Base {
 		parent::__construct();
 
 		$caller_ip = $this->get_caller_ip();
-		$host= gethostname();
-		$server_ip = gethostbyname($host);
+		$server_ip = $this->config->item('server_ip_address');
 		if(is_null($caller_ip) || $caller_ip != $server_ip) {
 			//exit("Access denied.");
 		}
