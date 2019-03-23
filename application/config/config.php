@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://csgoclub.tk';
-$config['server_ip_address'] = '::1';
+$config['server_ip_address'] = '54.67.107.185';
 
 /*
 |--------------------------------------------------------------------------
