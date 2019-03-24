@@ -7,10 +7,6 @@ class Lobby extends Base {
 
 	public function __construct() {
 		parent::__construct();
-
-		if(!isset($this->session->userdata['user'])) {
-			redirect('/');
-		}
 	}
 
 	public function index() {
