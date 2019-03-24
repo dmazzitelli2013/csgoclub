@@ -67,3 +67,32 @@ span.error {
 	border: 2px solid brown;
 	border-radius: 5px;
 }
+
+.match_2vs2_board {
+	margin: auto;
+	width: 600px;
+	border: 2px solid brown;
+	border-radius: 5px;
+	display: table;
+}
+
+.team_2vs2 {
+	width: 250px;
+	display: inline-block;
+}
+
+.player {
+	padding: 10px;
+}
+
+.vs {
+	width: 100px;
+	font-size: 48px;
+	display: inline-block;
+	vertical-align: super;
+}
+
+.map {
+	padding: 10px;
+	border-top: 1px solid brown;
+}

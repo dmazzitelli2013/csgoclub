@@ -65,19 +65,6 @@ class Authentication_Model extends CI_Model {
 		$this->db->update($this->table, array('user_token' => NULL, 'updated' => date('Y-m-d H:i:s')));
 	}
 
-	public function get_user_by_token($user_token) {
-		$this->db->where('user_token', $user_token);
-		$result = $this->db->get($this->table)->result();
-
-		if(count($result) > 0) {
-        	$user = $result[0];
-        	unset($user->password);
-        	return $user;
-        }
-
-        return NULL;
-	}
-
 	private function get_formatted_user(&$user) {
 		unset($user->password);
 		unset($user->steam_id);

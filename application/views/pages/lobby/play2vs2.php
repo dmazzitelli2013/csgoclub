@@ -8,9 +8,10 @@
 	};
 
 	connection.onmessage = function(e) {
-		if(needsToShowMessage(e.data)) {
-			alert(e.data);
-			close();
+		if(needsToRedirect(e.data)) {
+			redirect(e.data);
+		} else if(needsToShowMessage(e.data)) {
+			showError(e.data);
 		} else {
 			updateGrid(e.data);
 		}
@@ -25,6 +26,10 @@
     	return false;
 	}
 
+	function needsToRedirect(message) {
+		return message.startsWith("Redirect:");
+	}
+
 	function updateGrid(data) {
 		document.getElementById("users_grid").innerHTML = "";
 		var users = JSON.parse(data);
@@ -34,7 +39,13 @@
 		}
 	}
 
-	function close() {
+	function redirect(message) {
+		var url = message.replace("Redirect:", "");
+		document.location.href = url;
+	}
+
+	function showError(message) {
+		alert(message);
 		document.location.href = "<?php echo site_url('/'); ?>";
 	}
 </script>

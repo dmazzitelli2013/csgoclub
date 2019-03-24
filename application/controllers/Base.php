@@ -11,6 +11,14 @@ class Base extends CI_Controller {
 		$this->load->helper('url');
 	}
 
+	protected function check_call_from_lobby() {
+		$caller_ip = $this->get_caller_ip();
+		$server_ip = $this->config->item('server_ip_address');
+		if(is_null($caller_ip) || $caller_ip != $server_ip) {
+			exit("Access denied.");
+		}
+	}
+
 	protected function check_valid_session() {
 		if(!isset($this->session->userdata['user'])) {
 			redirect('/');
