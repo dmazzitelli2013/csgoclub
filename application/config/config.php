@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://csgoclub.tk';
+$config['base_url'] = 'http://csgolatam.club';
 $config['server_ip_address'] = '54.67.107.185';
 
 /*
